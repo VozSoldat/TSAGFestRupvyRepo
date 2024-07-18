@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstructionLayer : MonoBehaviour
+namespace BuildingSystem
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ConstructionLayer : TilemapsLayer
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void Build(Vector3 worldCoords, BuildablesItems item)
+        {
+            var coords = _tilemap.WorldToCell(worldCoords);
+            if (item.Tile != null)
+            {
+                _tilemap.SetTile(coords, item.Tile);
+            }
+        }
     }
 }
+

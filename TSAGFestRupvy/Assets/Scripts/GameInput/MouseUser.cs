@@ -1,67 +1,64 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace GameInput
 {
+
     public enum MouseButton
     {
-        Left, Right
+        Left,
+        Right
     }
-
+    
     public class MouseUser : MonoBehaviour
     {
         private InputAction _inputAction;
 
         public Vector2 MousePosition { get; private set; }
-        public Vector2 MouseInWorldPosition => Camera.main.ScreenToWorldPoint(MousePosition);
+        public Vector2 MouseInWorldPosition { get; private set; }
 
         private bool _isLeftMouseButtonPressed;
         private bool _isRightMouseButtonPressed;
 
         private void OnEnable()
         {
-            _inputAction = InputAction.Instance;
+            _inputAction = new InputAction();
             _inputAction.Game.MousePosition.performed += OnMousePositionPerformed;
-
-            // Assuming you have actions defined for mouse button presses
-            _inputAction.Game.PerformAction.started += OnPerformActionStarted;
+            _inputAction.Game.PerformAction.performed += OnPerformActionPerformed;
             _inputAction.Game.PerformAction.canceled += OnPerformActionCanceled;
-            _inputAction.Game.CancelledAction.started += OnCancelledActionStarted;
-            _inputAction.Game.CancelledAction.canceled += OnCancelledActionCanceled;
+            _inputAction.Game.CancelAction.performed += OnCancelActionPerformed;
+            _inputAction.Game.CancelAction.canceled += OnCancelActionCanceled;
         }
 
         private void OnDisable()
         {
-            _inputAction.Game.MousePosition.performed -= OnMousePositionPerformed;
-
-            _inputAction.Game.PerformAction.started -= OnPerformActionStarted;
-            _inputAction.Game.PerformAction.canceled -= OnPerformActionCanceled;
-            _inputAction.Game.CancelledAction.started -= OnCancelledActionStarted;
-            _inputAction.Game.CancelledAction.canceled -= OnCancelledActionCanceled;
-        }
+            _inputAction.Game.MousePosition.performed += OnMousePositionPerformed;
+            _inputAction.Game.PerformAction.performed += OnPerformActionPerformed;
+            _inputAction.Game.PerformAction.canceled += OnPerformActionCanceled;
+            _inputAction.Game.CancelAction.performed += OnCancelActionPerformed;
+            _inputAction.Game.CancelAction.canceled += OnCancelActionCanceled;        }
 
         private void OnMousePositionPerformed(InputAction.CallbackContext ctx)
         {
             MousePosition = ctx.ReadValue<Vector2>();
         }
 
-        private void OnPerformActionStarted(InputAction.CallbackContext ctx)
+        private void OnPerformActionPerformed (InputAction.CallbackContext ctx)
         {
             _isLeftMouseButtonPressed = true;
         }
 
-        private void OnPerformActionCanceled(InputAction.CallbackContext ctx)
+        private void OnPerformActionCanceled (InputAction.CallbackContext ctx)
         {
             _isLeftMouseButtonPressed = false;
         }
 
-        private void OnCancelledActionStarted(InputAction.CallbackContext ctx)
+        private void OnCancelActionPerformed (InputAction.CallbackContext ctx)
         {
             _isRightMouseButtonPressed = true;
         }
 
-        private void OnCancelledActionCanceled(InputAction.CallbackContext ctx)
+        private void OnCancelActionCanceled (InputAction.CallbackContext ctx)
         {
             _isRightMouseButtonPressed = false;
         }
@@ -71,4 +68,6 @@ namespace GameInput
             return button == MouseButton.Left ? _isLeftMouseButtonPressed : _isRightMouseButtonPressed;
         }
     }
+
 }
+

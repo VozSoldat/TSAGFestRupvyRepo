@@ -13,17 +13,10 @@ namespace GameInput
                     _instance = new InputAction();
                     _instance.Enable();
                 }
-
                 return _instance;
             }
             private set => _instance = value;
         }
-
-        public object Game { get; internal set; }
-
-        internal class CallbackContext
-        {
-        }
     }
-
 }
+

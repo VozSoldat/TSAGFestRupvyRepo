@@ -3,39 +3,33 @@ using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-    public int money = 1000;
-    public int materials = 500;
-
+    public int money;
     public Text moneyText;
-    public Text materialsText;
 
     void Start()
     {
-        UpdateResourceUI();
+        UpdateMoneyUI();
     }
 
-    public bool SpendResources(int moneyCost, int materialCost)
+    public void AddMoney(int amount)
     {
-        if (money >= moneyCost && materials >= materialCost)
+        money += amount;
+        UpdateMoneyUI();
+    }
+
+    public bool SpendResources(int costMoney, int costMaterials)
+    {
+        if (money >= costMoney)
         {
-            money -= moneyCost;
-            materials -= materialCost;
-            UpdateResourceUI();
+            money -= costMoney;
+            UpdateMoneyUI();
             return true;
         }
         return false;
     }
 
-    public void GainResources(int moneyAmount, int materialAmount)
+    void UpdateMoneyUI()
     {
-        money += moneyAmount;
-        materials += materialAmount;
-        UpdateResourceUI();
-    }
-
-    void UpdateResourceUI()
-    {
-        moneyText.text = "Money: " + money;
-        materialsText.text = "Materials: " + materials;
+        moneyText.text = "Money: " + money.ToString();
     }
 }

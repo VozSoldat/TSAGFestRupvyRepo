@@ -205,13 +205,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1164866038}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1164866039}
+        m_TargetAssemblyTypeName: RoadManager, Assembly-CSharp
+        m_MethodName: SelectRoad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -292,7 +292,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03641987, y: -0.117061436}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -303,8 +303,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4797268, y: 1.3496584}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &257741167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257741163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b91a550268c79468a0f7fb8c86b7c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  income: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +543,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606669167}
   m_CullTransparentMesh: 1
+--- !u!1 &713490571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 713490573}
+  - component: {fileID: 713490572}
+  m_Layer: 0
+  m_Name: IncomeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &713490572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713490571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81e019137d17ad4993b0e5413268a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incomeInterval: 1
+--- !u!4 &713490573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713490571}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.936046, y: -2.292543, z: 0.039143585}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1164866038
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500fd4ed1f4950f46bf686d0e8fcf6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roadPrefab: {fileID: 2126123326}
 --- !u!4 &1164866040
 Transform:
   m_ObjectHideFlags: 0
@@ -1117,9 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 200
-  materials: 200
   moneyText: {fileID: 1248576548}
-  materialsText: {fileID: 1309330993}
 --- !u!4 &1976628843
 Transform:
   m_ObjectHideFlags: 0
@@ -1315,6 +1372,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055918260}
   m_CullTransparentMesh: 1
+--- !u!1 &2126123326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
+  m_PrefabInstance: {fileID: 1311929847223616719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1311929847223616719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1326,6 +1388,10 @@ PrefabInstance:
     - target: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
       propertyPath: m_Name
       value: Road1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9063414873788452293, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1390,11 +1456,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7929087763456733938, guid: 3d4ab9014000ebf45819f47713e51223, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.93
+      value: -13.38
       objectReference: {fileID: 0}
     - target: {fileID: 7929087763456733938, guid: 3d4ab9014000ebf45819f47713e51223, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.44
+      value: -2.46
       objectReference: {fileID: 0}
     - target: {fileID: 7929087763456733938, guid: 3d4ab9014000ebf45819f47713e51223, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1435,6 +1501,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6196958341822079376, guid: 3d4ab9014000ebf45819f47713e51223, type: 3}
       insertIndex: -1
       addedObject: {fileID: 257741166}
+    - targetCorrespondingSourceObject: {fileID: 6196958341822079376, guid: 3d4ab9014000ebf45819f47713e51223, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 257741167}
   m_SourcePrefab: {fileID: 100100000, guid: 3d4ab9014000ebf45819f47713e51223, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1442,10 +1511,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 9002637154482138690}
-  - {fileID: 1311838065}
   - {fileID: 1219568557}
-  - {fileID: 1613846648}
-  - {fileID: 2000570170}
   - {fileID: 1976628843}
   - {fileID: 1311929847223616719}
+  - {fileID: 1613846648}
   - {fileID: 1164866040}
+  - {fileID: 1311838065}
+  - {fileID: 2000570170}
+  - {fileID: 713490573}

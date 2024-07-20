@@ -34,7 +34,7 @@ public class BuildingManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Cannot place building here! Space is occupied.");
+                    Debug.Log("Cannot place building here! Ensure it is adjacent to a road and no other building occupies the space.");
                 }
             }
         }
@@ -58,7 +58,7 @@ public class BuildingManager : MonoBehaviour
     {
         Vector2 position = building.transform.position;
         Vector2 size = building.GetComponent<BoxCollider2D>().size;
-        
+
         Collider2D[] colliders = Physics2D.OverlapBoxAll(position, size, 0);
         foreach (Collider2D collider in colliders)
         {
@@ -82,7 +82,6 @@ public class BuildingManager : MonoBehaviour
 
         return false;
     }
-
 
     void EnableBuildingCollider(GameObject building, bool enable)
     {

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    public GameObject[] buildingPrefabs; // Array to hold different building prefabs
-    public int[] buildingCostsMoney;     // Array to hold the money cost for each building
-    public int[] buildingCostsMaterials; // Array to hold the material cost for each building
+    public GameObject[] buildingPrefabs;
+    public int[] buildingCostsMoney;
+    public int[] buildingCostsMaterials;
 
     private GameObject selectedBuildingPrefab;
     private GameObject currentBuilding;
@@ -27,7 +27,15 @@ public class BuildingManager : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                PlaceBuilding();
+                if (CanPlaceBuilding(currentBuilding))
+                {
+                    EnableBuildingCollider(currentBuilding, true);
+                    PlaceBuilding();
+                }
+                else
+                {
+                    Debug.Log("Cannot place building here! Space is occupied.");
+                }
             }
         }
     }
@@ -42,7 +50,28 @@ public class BuildingManager : MonoBehaviour
                 Destroy(currentBuilding);
             }
             currentBuilding = Instantiate(selectedBuildingPrefab);
+            EnableBuildingCollider(currentBuilding, false); // Disable collider initially
         }
+    }
+
+    bool CanPlaceBuilding(GameObject building)
+    {
+        Vector2 position = building.transform.position;
+        Vector2 size = building.GetComponent<BoxCollider2D>().size;
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(position, size, 0);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject != building && collider.gameObject.layer == LayerMask.NameToLayer("Building"))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void EnableBuildingCollider(GameObject building, bool enable)
+    {
+        building.GetComponent<BoxCollider2D>().enabled = enable;
     }
 
     void PlaceBuilding()

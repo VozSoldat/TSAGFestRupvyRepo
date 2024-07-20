@@ -58,7 +58,6 @@ public class BuildingManager : MonoBehaviour
     {
         Vector2 position = building.transform.position;
         Vector2 size = building.GetComponent<BoxCollider2D>().size;
-        
         Collider2D[] colliders = Physics2D.OverlapBoxAll(position, size, 0);
         foreach (Collider2D collider in colliders)
         {
@@ -67,22 +66,8 @@ public class BuildingManager : MonoBehaviour
                 return false;
             }
         }
-
-        // Check adjacency to a road
-        Vector2[] directions = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
-        foreach (Vector2 dir in directions)
-        {
-            Vector2 checkPos = position + dir;
-            Collider2D roadCollider = Physics2D.OverlapPoint(checkPos, LayerMask.GetMask("Road"));
-            if (roadCollider != null)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return true;
     }
-
 
     void EnableBuildingCollider(GameObject building, bool enable)
     {

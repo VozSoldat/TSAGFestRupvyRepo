@@ -57,12 +57,15 @@ public class BuildingManager : MonoBehaviour
     bool CanPlaceBuilding(GameObject building)
     {
         Vector2 position = building.transform.position;
-        Vector2 size = building.GetComponent<BoxCollider2D>().size;
-
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(position, size, 0);
-        foreach (Collider2D collider in colliders)
+        BoxCollider2D collider = building.GetComponent<BoxCollider2D>();
+        Vector2 size = collider.size;
+        Vector2 center = (Vector2)building.transform.position + collider.offset;
+        
+        // Check for overlapping buildings
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(center, size, 0);
+        foreach (Collider2D otherCollider in colliders)
         {
-            if (collider.gameObject != building && collider.gameObject.layer == LayerMask.NameToLayer("Building"))
+            if (otherCollider.gameObject != building && otherCollider.gameObject.layer == LayerMask.NameToLayer("Building"))
             {
                 return false;
             }
@@ -72,8 +75,8 @@ public class BuildingManager : MonoBehaviour
         Vector2[] directions = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
         foreach (Vector2 dir in directions)
         {
-            Vector2 checkPos = position + dir;
-            Collider2D roadCollider = Physics2D.OverlapPoint(checkPos, LayerMask.GetMask("Road"));
+            Vector2 checkPos = center + dir * size;
+            Collider2D roadCollider = Physics2D.OverlapBox(checkPos, size, 0, LayerMask.GetMask("Road"));
             if (roadCollider != null)
             {
                 return true;

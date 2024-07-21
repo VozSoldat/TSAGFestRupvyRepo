@@ -17,7 +17,7 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace GameInput
 {
-    public partial class @InputAction : IInputActionCollection2, IDisposable
+    public partial class @InputAction: IInputActionCollection2, IDisposable
     {
         public InputActionAsset asset { get; }
         public @InputAction()
@@ -159,34 +159,9 @@ namespace GameInput
             return asset.FindBinding(bindingMask, out action);
         }
 
-        UnityEngine.InputSystem.InputAction IInputActionCollection2.FindAction(string actionNameOrId, bool throwIfNotFound)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int FindBinding(InputBinding mask, out UnityEngine.InputSystem.InputAction action)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(UnityEngine.InputSystem.InputAction action)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator<UnityEngine.InputSystem.InputAction> IEnumerable<UnityEngine.InputSystem.InputAction>.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-
         // Game
-
         private readonly InputActionMap m_Game;
         private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
-        private Action<CallbackContext> started;
-        private Action<CallbackContext> performed;
-        private Action<CallbackContext> canceled;
-
         private readonly InputAction m_Game_MousePosition;
         private readonly InputAction m_Game_PerformAction;
         private readonly InputAction m_Game_CancelAction;
@@ -251,11 +226,5 @@ namespace GameInput
             void OnPerformAction(InputAction.CallbackContext context);
             void OnCancelAction(InputAction.CallbackContext context);
         }
-
-        public class CallbackContext
-        {
-            public event Action<InputAction.CallbackContext> performed;
-        }
-
     }
 }

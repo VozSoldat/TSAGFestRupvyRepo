@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class RoadManager : MonoBehaviour
 {
-    public GameObject roadPrefab;
+    public GameObject verticalRoadPrefab;
+    public GameObject horizontalRoadPrefab;
+
+    private GameObject selectedRoadPrefab;
     private GameObject currentRoad;
 
     private GridManager gridManager;
@@ -26,13 +29,24 @@ public class RoadManager : MonoBehaviour
         }
     }
 
-    public void SelectRoad()
+    public void SelectVerticalRoad()
+    {
+        SelectRoad(verticalRoadPrefab);
+    }
+
+    public void SelectHorizontalRoad()
+    {
+        SelectRoad(horizontalRoadPrefab);
+    }
+
+    private void SelectRoad(GameObject roadPrefab)
     {
         if (currentRoad != null)
         {
             Destroy(currentRoad);
         }
-        currentRoad = Instantiate(roadPrefab);
+        selectedRoadPrefab = roadPrefab;
+        currentRoad = Instantiate(selectedRoadPrefab);
     }
 
     void PlaceRoad()

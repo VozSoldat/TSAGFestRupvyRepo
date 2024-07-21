@@ -60,12 +60,14 @@ public class BuildingManager : MonoBehaviour
         BoxCollider2D collider = building.GetComponent<BoxCollider2D>();
         Vector2 size = collider.size;
         Vector2 center = (Vector2)building.transform.position + collider.offset;
-        
-        // Check for overlapping buildings
+
+        // Check for overlapping buildings and roads
         Collider2D[] colliders = Physics2D.OverlapBoxAll(center, size, 0);
         foreach (Collider2D otherCollider in colliders)
         {
-            if (otherCollider.gameObject != building && otherCollider.gameObject.layer == LayerMask.NameToLayer("Building"))
+            if (otherCollider.gameObject != building &&
+                (otherCollider.gameObject.layer == LayerMask.NameToLayer("Building") ||
+                 otherCollider.gameObject.layer == LayerMask.NameToLayer("Road")))
             {
                 return false;
             }

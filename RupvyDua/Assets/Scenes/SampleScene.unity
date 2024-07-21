@@ -711,7 +711,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 651838841}
   m_SourcePrefab: {fileID: 100100000, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -1174,6 +1177,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
   m_PrefabInstance: {fileID: 440181311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &651838841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651838837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500fd4ed1f4950f46bf686d0e8fcf6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadPrefabs: []
+  roadTilemap: {fileID: 0}
+  roadTile: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!1 &708906250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,6 +5653,9 @@ MonoBehaviour:
   - {fileID: 2126123326}
   - {fileID: 651838837}
   - {fileID: 1751479649}
+  roadTilemap: {fileID: 0}
+  roadTile: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!4 &1164866040
 Transform:
   m_ObjectHideFlags: 0
@@ -6706,6 +6728,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
   m_PrefabInstance: {fileID: 2080432710}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1751479653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751479649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500fd4ed1f4950f46bf686d0e8fcf6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadPrefabs: []
+  roadTilemap: {fileID: 0}
+  roadTile: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!1 &1771296083
 GameObject:
   m_ObjectHideFlags: 0
@@ -7261,7 +7299,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1751479653}
   m_SourcePrefab: {fileID: 100100000, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
 --- !u!1 &2106152449
 GameObject:
@@ -7402,6 +7443,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
   m_PrefabInstance: {fileID: 1311929847223616719}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2126123330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126123326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500fd4ed1f4950f46bf686d0e8fcf6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadPrefabs: []
+  roadTilemap: {fileID: 932545796}
+  roadTile: {fileID: 0}
+  mainCamera: {fileID: 519420031}
 --- !u!1001 &1311929847223616719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7461,7 +7518,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3074523087028345576, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2126123330}
   m_SourcePrefab: {fileID: 100100000, guid: 4063b1ac1e3a4ba46ba2fb5799faccb2, type: 3}
 --- !u!1001 &6940076539642645547
 PrefabInstance:

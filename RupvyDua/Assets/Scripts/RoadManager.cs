@@ -1,11 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 public class RoadManager : MonoBehaviour
 {
     public List<GameObject> roadPrefabs;  // List of road prefabs
     private GameObject selectedRoadPrefab;
     private GameObject currentRoad;
+
+    public Tilemap roadTilemap;
+    public TileBase roadTile;
+    public Camera mainCamera;
 
     private GridManager gridManager;
 

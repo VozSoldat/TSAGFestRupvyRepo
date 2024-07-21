@@ -1,10 +1,9 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class RoadManager : MonoBehaviour
 {
-    public GameObject verticalRoadPrefab;
-    public GameObject horizontalRoadPrefab;
-
+    public List<GameObject> roadPrefabs;  // List of road prefabs
     private GameObject selectedRoadPrefab;
     private GameObject currentRoad;
 
@@ -29,28 +28,28 @@ public class RoadManager : MonoBehaviour
         }
     }
 
-    public void SelectVerticalRoad()
+    public void SelectRoad(int roadIndex)
     {
-        SelectRoad(verticalRoadPrefab);
-    }
-
-    public void SelectHorizontalRoad()
-    {
-        SelectRoad(horizontalRoadPrefab);
-    }
-
-    private void SelectRoad(GameObject roadPrefab)
-    {
-        if (currentRoad != null)
+        if (roadIndex >= 0 && roadIndex < roadPrefabs.Count)
         {
-            Destroy(currentRoad);
+            if (currentRoad != null)
+            {
+                Destroy(currentRoad);
+            }
+            selectedRoadPrefab = roadPrefabs[roadIndex];
+            currentRoad = Instantiate(selectedRoadPrefab);
+            EnableRoadCollider(currentRoad, false); // Disable collider initially
         }
-        selectedRoadPrefab = roadPrefab;
-        currentRoad = Instantiate(selectedRoadPrefab);
     }
 
-    void PlaceRoad()
+    private void EnableRoadCollider(GameObject road, bool enable)
     {
+        road.GetComponent<BoxCollider2D>().enabled = enable;
+    }
+
+    private void PlaceRoad()
+    {
+        EnableRoadCollider(currentRoad, true);
         currentRoad = null;
     }
 }

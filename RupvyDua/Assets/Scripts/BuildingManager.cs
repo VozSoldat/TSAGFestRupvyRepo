@@ -34,7 +34,7 @@ public class BuildingManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Cannot place building here! Ensure it is adjacent to a road and no other building occupies the space.");
+                    Debug.Log("Cannot place building here! Ensure it is adjacent to a road, and not overlapping with another building or road.");
                 }
             }
         }
@@ -98,6 +98,8 @@ public class BuildingManager : MonoBehaviour
         int buildingIndex = GetBuildingIndex();
         if (resourceManager.SpendResources(buildingCostsMoney[buildingIndex], buildingCostsMaterials[buildingIndex]))
         {
+            // Trigger income generation
+            currentBuilding.GetComponent<Building>().PlaceBuilding();
             currentBuilding = null;
         }
         else
